@@ -1,7 +1,8 @@
 # livestock Farm - Hệ thống giám sát và điều khiển môi trường chuồng trại chăn nuôi heo thông minh
 
-**ESP32 Pig Farm**\
-![Sơ đồ khối hệ thống](Hardware\Images\system block diagram.jpg)
+**ESP32 Pig Farm**
+
+![Sơ đồ khối hệ thống](Hardware/Images/system block diagram.jpg)
 
 ---
 
@@ -13,12 +14,10 @@ trường chuồng trại chăn nuôi heo thông minh dựa trên vi điều khi
 
 ### 🎯 Mục tiêu chính
 
-- Tự động hóa việc giám sát nhiệt độ, độ ẩm, khí gas dễ cháy và khí
-  amoniac (NH₃).\
-- Xử lý khẩn cấp khi môi trường bất thường.\
-- Thực hiện tắm tự động theo lịch.\
-- Hiển thị thông tin tại chỗ và đồng bộ dữ liệu lên đám mây để theo
-  dõi từ xa.
+- Tự động hóa việc giám sát nhiệt độ, độ ẩm, khí gas dễ cháy và khí amoniac (NH₃)
+- Xử lý khẩn cấp khi môi trường bất thường
+- Thực hiện tắm tự động theo lịch
+- Hiển thị thông tin tại chỗ và đồng bộ dữ liệu lên đám mây để theo dõi từ xa
 
 ---
 
@@ -26,93 +25,81 @@ trường chuồng trại chăn nuôi heo thông minh dựa trên vi điều khi
 
 ### 🔎 Giám sát môi trường realtime
 
-- **DHT22**: đo nhiệt độ, độ ẩm\
-- **MQ2**: phát hiện khí gas dễ cháy, khói\
-- **MQ135**: phát hiện NH₃ và các khí độc\
-- Hỗ trợ **hiệu chuẩn baseline tự động** khi khởi động
+- **DHT22** — đo nhiệt độ, độ ẩm
+- **MQ2** — phát hiện khí gas dễ cháy, khói
+- **MQ135** — phát hiện NH₃ và khí độc
+- Hỗ trợ **hiệu chuẩn baseline tự động**
 
 ### 🚨 Cảnh báo & xử lý khẩn cấp
 
-- Buzzer + nhấp nháy LCD khi vượt ngưỡng
+- Buzzer + nhấp nháy LCD
 - Tự động bật quạt, phun sương (bơm)
 - Duy trì hoạt động thêm **5 phút** sau khi ổn định
 
 ### ⚙️ Điều khiển tự động & thủ công
 
-- Tắm phun sương tự động **16:30 hằng ngày trong 15 phút** (kèm đèn)
+- Tắm phun sương tự động **16:30 / 15 phút**
 - Điều khiển thủ công quạt, đèn bằng nút bấm
 
 ### 📟 Hiển thị tại chỗ
 
-- LCD 16x2 --- 8 trang hiển thị:
-  - Ngày giờ
-  - Cảm biến
-  - Trạng thái thiết bị
-  - Lịch tắm
-  - Thời gian nuôi
+- LCD 16x2 — 8 trang hiển thị
 
 ### ☁️ Kết nối đám mây
 
-- Đồng bộ dữ liệu lên **Firebase Realtime Database** mỗi 10 giây\
-- Theo dõi từ xa qua web/app
+- Firebase Realtime Database (mỗi 10 giây)
+
+---
 
 ## 📩 Gửi cảnh báo qua Telegram
 
-Hệ thống hỗ trợ gửi thông báo thời gian thực đến Telegram khi phát hiện
-môi trường bất thường (nhiệt độ, độ ẩm, khí gas, NH₃ vượt ngưỡng) hoặc
-khi có sự kiện quan trọng (mở cửa chuồng, bật/tắt thiết bị).
-(Hardware\Images\Message_TeleBot.jpg)
+Hệ thống gửi cảnh báo thời gian thực khi vượt ngưỡng hoặc có sự kiện quan trọng.
+
+![Thông báo Telegram](Hardware/Images/Message_TeleBot.jpg)
 
 ### 🔐 An ninh truy cập
 
-- **RFID MFRC522**\
-- Servo điều khiển cửa (mở 5 giây khi quét thẻ đúng)
+- **RFID MFRC522**
+- Servo điều khiển cửa
 
 ---
 
 ## 🛠 Cấu trúc phần cứng
 
-- **Vi điều khiển chính**: ESP32 NodeMCU-32S\
-- **Cảm biến**: DHT22, MQ2, MQ135\
-- **Thiết bị điều khiển**: Relay (quạt, đèn, bơm), Servo, Buzzer\
-- **Hiển thị**: LCD 16x2 I2C\
-- **RFID**: MFRC522\
-- **Kết nối**: WiFi (NTP + Firebase)
-  ![Sơ đồ nguyên lý phần cứng](Hardware\Images\Schematic.jpg)
-  ![Mạch PCB](Hardware\Images\PCB.jpg)
+- ESP32 NodeMCU-32S
+- Cảm biến: DHT22, MQ2, MQ135
+- Relay — quạt, đèn, bơm
+- LCD 16x2 I2C
+- RFID MFRC522
+- WiFi (NTP + Firebase)
+
+![Sơ đồ nguyên lý phần cứng](Hardware/Images/Schematic.jpg)
+
+![Mạch PCB](Hardware/Images/PCB.jpg)
 
 ---
 
 ## 💻 Phần mềm
 
-**Ngôn ngữ**: Arduino C++
+**Ngôn ngữ:** Arduino C++
 
-### 📚 Thư viện chính
+### 📚 Thư viện
 
-- ESP32Servo\
-- DHT sensor library\
-- MFRC522\
-- LiquidCrystal_I2C\
-- Firebase-ESP-Client\
+- ESP32Servo
+- DHT sensor library
+- MFRC522
+- LiquidCrystal_I2C
+- Firebase-ESP-Client
 - NTPClient
-
-### 🧠 Logic chính
-
-- Baseline cảm biến khí khi khởi động\
-- Xử lý cảnh báo ưu tiên cao\
-- Tắm tự động theo lịch\
-- Gửi JSON lên Firebase
 
 ---
 
-## ✅ Kết quả đạt được
+## ✅ Kết quả
 
-- Hệ thống vận hành ổn định, phản hồi nhanh\
-- Cảnh báo & xử lý khẩn cấp chính xác\
-- Tắm tự động đúng giờ\
-- Điều khiển thủ công mượt mà\
-- Dữ liệu Firebase đồng bộ tốt\
-- RFID + servo giúp bảo mật cửa chuồng
+- Cảnh báo chính xác
+- Điều khiển ổn định
+- Đồng bộ Firebase tốt
+- RFID + servo an toàn
 
 ---
 
@@ -120,30 +107,20 @@ khi có sự kiện quan trọng (mở cửa chuồng, bật/tắt thiết bị)
 
 ### Hạn chế
 
-- Chưa tích hợp camera AI
-- Chưa có app/dashboard chuyên dụng
-- Chức năng mở cửa tự động đang tạm bỏ
+- Chưa có camera AI
+- Chưa có app/dashboard
+- Cửa tự động tạm bỏ
 
 ### Hướng phát triển
 
-- ESP32‑CAM + AI (YOLO) phát hiện bệnh
-- App Flutter / Dashboard Web
+- ESP32-CAM + AI
+- Dashboard / App
 - Năng lượng mặt trời + LoRa
-- Blockchain truy xuất nguồn gốc
 
 ---
 
-## 📂 Tài liệu & Code
+Pig Farm 4.0 — **Nông nghiệp 4.0** 🐷🌾
 
-- **Code nguồn**: main.ino\
-- **Sơ đồ mạch**: (thêm Fritzing hoặc ảnh)\
-- **Video demo**: (link YouTube khi có)
-
----
-
-Pig Farm 4.0 -- Bước tiến nhỏ cho chăn nuôi heo Việt Nam theo hướng
-**Nông nghiệp 4.0**! 🐷🌾
-
-**Tác giả:** Đỗ Phúc Duy
-**Trường:** Đại học Sư phạm Kỹ Thuật TP. Hồ Chí Minh
-**Gmail:** dophucduy3@gmail.com
+**Tác giả:** Đỗ Phúc Duy  
+**Trường:** Đại học Sư phạm Kỹ thuật TP.HCM  
+**Email:** dophucduy3@gmail.com
