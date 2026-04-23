@@ -12,8 +12,8 @@
 // ===========================
 // Enter your WiFi credentials
 // ===========================
-const char *ssid = "FPT Telecom-5D21";
-const char *password = "taokhongchonhe";
+const char *ssid = "Dii";
+const char *password = "duydeptrai";
 /*const char *ssid = "Dii";
 const char *password = "duydeptrai";*/
 

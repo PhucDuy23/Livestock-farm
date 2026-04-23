@@ -39,8 +39,8 @@ DHT dht(DHT_PIN, DHTTYPE);
 MFRC522 rfid(SS_PIN, RST_PIN);
 Servo doorServo;
 
-const char* ssid = "FPT Telecom-5D21";
-const char* password = "taokhongchonhe";
+const char* ssid = "Dii"; 
+const char* password = "duydeptrai";
 
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "pool.ntp.org", 25200, 60000);
