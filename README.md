@@ -122,5 +122,5 @@ Hệ thống gửi cảnh báo thời gian thực khi vượt ngưỡng hoặc c
 Pig Farm 4.0 — **Nông nghiệp 4.0** 🐷🌾
 
 **Tác giả:** Đỗ Phúc Duy  
-**Trường:** Đại học Sư phạm Kỹ thuật TP.HCM  
+**Trường:** Đại học Công nghệ Kỹ thuật TP.HCM  
 **Email:** dophucduy3@gmail.com
